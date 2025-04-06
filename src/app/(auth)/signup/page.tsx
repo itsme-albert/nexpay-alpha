@@ -44,8 +44,15 @@ const Page = () => {
   }
   return (
     <div className="flex items-center justify-center min-h-screen">
-      <div className="flex flex-col w-1/2 min-w-max m-auto p-[5vw] bg-gray-200 rounded-xl">
-        <Image src="/nexpay.png" height={100} width={100} alt="Logo" />
+      <div className="flex flex-col w-1/2 min-w-max m-auto px-[5vw] py-10 bg-gray-200 rounded-xl">
+        <Image
+          src="/nexpayfinal.png"
+          height={0}
+          width={200}
+          priority={true}
+          alt="Logo"
+          className="self-center"
+        />
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
