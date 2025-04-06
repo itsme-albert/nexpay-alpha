@@ -26,7 +26,7 @@ const signupSchema = z.object({
   pin: pin,
 });
 
-const page = () => {
+const Page = () => {
   const form = useForm<z.infer<typeof signupSchema>>({
     mode: "onChange",
     resolver: zodResolver(signupSchema),
@@ -45,7 +45,7 @@ const page = () => {
   return (
     <div className="flex items-center justify-center min-h-screen">
       <div className="flex flex-col w-1/2 min-w-max m-auto p-[5vw] bg-gray-200 rounded-xl">
-        {/* <Image src="/nexpay.png" height={500} width={500} alt="Logo" /> */}
+        <Image src="/nexpay.png" height={100} width={100} alt="Logo" />
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
@@ -166,4 +166,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
