@@ -15,7 +15,7 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { email, name, phoneNumber, pin } from "@/lib/validation";
-import { Lock, MailIcon, Phone, UserIcon } from "lucide-react";
+import { FacebookIcon, Lock, MailIcon, Phone, UserIcon } from "lucide-react";
 import Image from "next/image";
 
 const signupSchema = z.object({
@@ -44,7 +44,7 @@ const Page = () => {
   }
   return (
     <div className="flex items-center justify-center min-h-screen">
-      <div className="flex flex-col w-1/2 min-w-max m-auto px-[5vw] py-10 bg-gray-200 rounded-xl">
+      <div className="flex flex-col w-1/4 min-w-max m-auto px-[5vw] bg-gray-200 rounded-xl">
         <Image
           src="/nexpayfinal.png"
           height={0}
@@ -56,7 +56,7 @@ const Page = () => {
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
-            className="flex flex-col space-y-2 p-5"
+            className="flex flex-col space-y-2"
           >
             <div className="relative">
               <UserIcon className="icon" />
@@ -158,13 +158,20 @@ const Page = () => {
                 Register
               </Button>
             </div>
-            <div className="flex gap-5 mt-5 self-center">
-              <Link href="/signup" className="underline text-sm">
-                Create Account
-              </Link>
-              <Link href="/signup" className="underline text-sm">
+            <div className="flex gap-2 mt-2 self-center items-center">
+              <p className="text-sm">Already have an account?</p>
+              <Link href="/signup" className="link">
                 Sign In Instead
               </Link>
+            </div>
+            <hr style={{ color: "gray", backgroundColor: "gray", height: 2 }} />
+            <div className="flex flex-col space-y-2 mb-5 mt-1 pb-5">
+              <Button type="button" className="button-social">
+                <FacebookIcon></FacebookIcon>Sign In with Facebook
+              </Button>
+              <Button type="button" className="button-social">
+                <MailIcon></MailIcon>Sign In with Google
+              </Button>
             </div>
           </form>
         </Form>
