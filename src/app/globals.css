@@ -128,4 +128,7 @@
   .icon {
     @apply absolute mt-2.5 ms-3 h-5 w-5;
   }
+  .otp-slot {
+    @apply border border-3 border-blue-900 rounded-xs p-6 text-2xl font-semibold;
+  }
 }
