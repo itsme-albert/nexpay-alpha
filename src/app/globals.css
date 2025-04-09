@@ -131,4 +131,10 @@
   .otp-slot {
     @apply border border-3 border-blue-900 rounded-xs p-6 text-2xl font-semibold;
   }
+  .link {
+    @apply text-sm font-semibold underline decoration-black hover:decoration-blue-800 hover:decoration-2 hover:text-blue-800 underline-offset-2;
+  }
+  .button-social {
+    @apply bg-gray-300 text-gray-900 h-0 w-full py-2.5 px-0 cursor-pointer hover:bg-gray-400 hover:text-black;
+  }
 }
