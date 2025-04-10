@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signupUser } from "@/app/(auth)/signup/actions";
 import { useState, useTransition } from "react";
+import { toast } from "sonner";
 
 const signupSchema = z.object({
   firstName: name,
@@ -45,16 +46,21 @@ export function useSignUpHook() {
 
     startTransition(async () => {
       try {
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+
         const result = await signupUser(formData);
 
         if (result.success) {
           setSuccess("Signup successful!");
           setError(null);
+          toast.success("Signup Successful");
         } else {
-          setError(result.error || "Failed to create an account");
+          setError(result.error || "Failed to create an account.");
+          toast.error(result.error || "Failed to create an account.");
         }
       } catch {
         setError("An error has occurred during signup.");
+        toast;
       }
     });
   };

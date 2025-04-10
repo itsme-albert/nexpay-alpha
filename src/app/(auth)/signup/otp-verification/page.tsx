@@ -4,13 +4,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormMessage,
-} from "@/components/ui/form";
+import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import {
   InputOTP,
   InputOTPGroup,
@@ -109,6 +103,7 @@ const Page = () => {
             <Link
               href="#"
               onClick={(e) => {
+                e.preventDefault();
                 handleResendOtp();
                 if (!linkDisabled) resetTimer();
               }}

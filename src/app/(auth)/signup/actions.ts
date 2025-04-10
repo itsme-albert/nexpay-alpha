@@ -38,5 +38,5 @@ export async function signupUser(formData: FormData) {
     return { success: true, error: signupError.message };
   }
 
-  redirect(paths.home);
+  redirect(paths.otpVerification);
 }

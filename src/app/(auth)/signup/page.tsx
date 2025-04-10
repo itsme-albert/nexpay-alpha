@@ -14,9 +14,10 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { FacebookIcon, Lock, MailIcon, Phone, UserIcon } from "lucide-react";
 import { useSignUpHook } from "@/hooks/useSignup";
+import { toast } from "sonner";
 
 const Page = () => {
-  const { form, onSubmit, isPending, success, error } = useSignUpHook();
+  const { form, onSubmit, isPending } = useSignUpHook();
 
   return (
     <div className="flex items-center justify-center min-h-screen">
@@ -152,8 +153,6 @@ const Page = () => {
             </div>
           </form>
         </Form>
-        <span className="text-green-500">{success}</span>
-        <span className="text-red-500">{error}</span>
       </div>
     </div>
   );
