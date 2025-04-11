@@ -1,8 +1,8 @@
 "use client";
 
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
+import React from "react";
+import Link from "next/link";
+import Image from "next/image";
 import {
   Form,
   FormControl,
@@ -11,37 +11,14 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import React from "react";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import { email, name, phoneNumber, pin } from "@/lib/validation";
 import { FacebookIcon, Lock, MailIcon, Phone, UserIcon } from "lucide-react";
-import Image from "next/image";
-
-const signupSchema = z.object({
-  firstName: name,
-  lastName: name,
-  phoneNumber: phoneNumber,
-  email: email,
-  pin: pin,
-});
+import { useSignUpHook } from "@/hooks/useSignup";
+import { toast } from "sonner";
 
 const Page = () => {
-  const form = useForm<z.infer<typeof signupSchema>>({
-    mode: "onChange",
-    resolver: zodResolver(signupSchema),
-    defaultValues: {
-      firstName: "",
-      lastName: "",
-      phoneNumber: "",
-      email: "",
-      pin: "",
-    },
-  });
+  const { form, onSubmit, isPending } = useSignUpHook();
 
-  function onSubmit(values: z.infer<typeof signupSchema>) {
-    console.log(values);
-  }
   return (
     <div className="flex items-center justify-center min-h-screen">
       <div className="flex flex-col w-1/4 min-w-max m-auto px-[5vw] bg-gray-200 rounded-xl">
@@ -134,7 +111,7 @@ const Page = () => {
               <Lock className="icon h-3 w-3" />
               <FormField
                 control={form.control}
-                name="pin"
+                name="password"
                 render={({ field }) => (
                   <FormItem>
                     <FormControl>
@@ -152,15 +129,16 @@ const Page = () => {
             </div>
             <div className="mt-5">
               <Button
-                onSubmit={form.handleSubmit(onSubmit)}
+                type="submit"
                 className="bg-blue-100 text-blue-800 text-xl font-bold rounded-4xl w-full cursor-pointer hover:bg-blue-800 hover:text-blue-100"
+                disabled={isPending}
               >
-                Register
+                {!isPending ? "Register" : "Loading..."}
               </Button>
             </div>
             <div className="flex gap-2 mt-2 self-center items-center">
               <p className="text-sm">Already have an account?</p>
-              <Link href="/signup" className="link">
+              <Link href="/signin" className="link">
                 Sign In Instead
               </Link>
             </div>
