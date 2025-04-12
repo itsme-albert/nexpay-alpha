@@ -138,3 +138,11 @@
     @apply bg-gray-300 text-gray-900 h-0 w-full py-2.5 px-0 cursor-pointer hover:bg-gray-400 hover:text-black;
   }
 }
+
+/* Welcome Page CSS */
+.bg-color{
+  background-color: #d4ebf8;
+}
+.icon-color{
+  color: #161D6F;
+}
